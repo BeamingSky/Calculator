@@ -73,17 +73,24 @@
       function addToDisplay(value) {
         if (value === "%") {
           try {
-            // If the value is '%', evaluate the current display value as a percentage
-            const currentValue = parseFloat(display.value);
-            console.log(display.value[display.value.length - 1]);
+            // Check if the current display value has exactly two numbers separated by '*'
+            const match = display.value.match(/(\d+)\s*\*\s*(\d+)/);
 
-            if (!isNaN(currentValue)) {
-              display.value = (currentValue / 100).toString();
+            if (match) {
+              const num1 = parseFloat(match[1]);
+              const num2 = parseFloat(match[2]);
+
+              if (!isNaN(num1) && !isNaN(num2)) {
+                const result = (num1 * num2) / 100;
+                display.value = result.toString();
+              } else {
+                throw "Invalid";
+              }
             } else {
-              throw "Invalid:"; // Throw an error for invalid input
+              throw "Invalid";
             }
           } catch (error) {
-            display.value = "Invalid Input"; // Handle and display the error
+            display.value = "Invalid Input";
           }
         } else {
           // Concatenate the provided value to the current display value
