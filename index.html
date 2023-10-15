@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta tags for character set, compatibility, and viewport -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Link to external stylesheets -->
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+
+    <!-- Title of the webpage -->
+    <title>Calculator</title>
+  </head>
+
+  <body>
+    <!-- Table for the calculator layout -->
+    <table rules="all">
+      <!-- Display row -->
+      <tr>
+        <td colspan="4">
+          <input id="display" type="text" placeholder="0" />
+        </td>
+      </tr>
+      <!-- Button rows -->
+      <tr>
+        <td align="center">
+          <button class="button" onclick="clearDisplay()">AC</button>
+        </td>
+        <td><button class="button" onclick="addToDisplay('%')">%</button></td>
+        <td><button class="button" onclick="addToDisplay('/')">/</button></td>
+        <td><button class="button" onclick="del()">Del</button></td>
+      </tr>
+      <tr>
+        <td><button class="button" onclick="addToDisplay('7')">7</button></td>
+        <td><button class="button" onclick="addToDisplay('8')">8</button></td>
+        <td><button class="button" onclick="addToDisplay('9')">9</button></td>
+        <td><button class="button" onclick="addToDisplay('*')">x</button></td>
+      </tr>
+      <tr>
+        <td><button class="button" onclick="addToDisplay('4')">4</button></td>
+        <td><button class="button" onclick="addToDisplay('5')">5</button></td>
+        <td><button class="button" onclick="addToDisplay('6')">6</button></td>
+        <td><button class="button" onclick="addToDisplay('-')">–</button></td>
+      </tr>
+      <tr>
+        <td><button class="button" onclick="addToDisplay('1')">1</button></td>
+        <td><button class="button" onclick="addToDisplay('2')">2</button></td>
+        <td><button class="button" onclick="addToDisplay('3')">3</button></td>
+        <td rowspan="2">
+          <button class="plus" onclick="addToDisplay('+')">+</button>
+        </td>
+      </tr>
+      <tr>
+        <td><button class="button" onclick="addToDisplay('0')">0</button></td>
+        <td><button class="button" onclick="addToDisplay('.')">.</button></td>
+        <td>
+          <button class="equal" onclick="calculate()">=</button>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Link to external JavaScript file -->
+    <script>
+      // Get the display element by its ID
+      let display = document.getElementById("display");
+
+      // Function to add a value to the display
+      function addToDisplay(value) {
+        if (value === "%") {
+          try {
+            // If the value is '%', evaluate the current display value as a percentage
+            const currentValue = parseFloat(display.value);
+            console.log(display.value[display.value.length - 1]);
+
+            if (!isNaN(currentValue)) {
+              display.value = (currentValue / 100).toString();
+            } else {
+              throw "Invalid:"; // Throw an error for invalid input
+            }
+          } catch (error) {
+            display.value = "Invalid Input"; // Handle and display the error
+          }
+        } else {
+          // Concatenate the provided value to the current display value
+          display.value += value;
+        }
+      }
+
+      function calculate() {
+        try {
+          display.value = eval(display.value); // Evaluate the current display value as an expression
+        } catch (error) {
+          display.value = "Invalid Input"; // Handle and display the error
+        }
+      }
+
+      // Function to delete the last character from the display
+      function del() {
+        let str = "";
+        for (let i = 0; i < display.value.length - 1; i++) {
+          str += display.value[i];
+        }
+        console.log(str);
+        display.value = str;
+      }
+
+      function clearDisplay() {
+        display.value = "";
+      }
+    </script>
+  </body>
+</html>

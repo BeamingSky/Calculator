@@ -1,0 +1,82 @@
+/* Styling for HTML body */
+body {
+  background: #181a1b;
+  font-family: Arial, sans-serif;
+}
+
+/* Styling for tables */
+table {
+  border: 2px solid orange;
+  border-radius: 5px;
+  position: relative;
+  left: 500px;
+  top: 120px;
+}
+
+/* Styling for input elements */
+input {
+  background-color: transparent;
+  color: rgb(218, 216, 216);
+  height: 85px;
+  width: 300px;
+  border: 2px solid orange;
+  font-size: 30px;
+}
+
+/* Styling for elements with the class 'button' */
+.button {
+  height: 100%;
+  padding: 20px;
+  margin-left: 0;
+  width: 100%;
+  color: orange;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.button:hover {
+  background: rgb(49, 48, 46);
+}
+
+/* Styling for elements with the class 'equal' */
+.equal {
+  background-color: orange;
+  height: 100%;
+  padding: 20px;
+  width: 100%;
+  color: #181a1b;
+  border: 2px solid orange;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.4s;
+
+}
+
+.equal:hover {
+    background: rgb(49, 48, 46);
+    color: white;
+}
+
+/* Styling for elements with the class 'plus' */
+.plus {
+  height: 130px;
+  padding: 20px;
+  margin-left: 0;
+  width: 100%;
+  color: orange;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.plus:hover {
+    background: rgb(49, 48, 46);
+}
